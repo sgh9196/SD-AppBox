@@ -37,7 +37,19 @@ public class ContentService {
             int rating,
             Map<String, List<String>> photoData) {
         return generateBlogPost(
-                restaurantName, infoText, restaurantLink, postType, "글로벌", rating, "", photoData, message -> {});
+                restaurantName, infoText, restaurantLink, postType, "글로벌", rating, "", photoData, message -> {}, properties.getGeminiApiKey());
+    }
+
+    public String generateBlogPost(
+            String restaurantName,
+            String infoText,
+            String restaurantLink,
+            String postType,
+            int rating,
+            Map<String, List<String>> photoData,
+            String apiKey) {
+        return generateBlogPost(
+                restaurantName, infoText, restaurantLink, postType, "글로벌", rating, "", photoData, message -> {}, apiKey);
     }
 
     public String generateBlogPost(
@@ -50,6 +62,21 @@ public class ContentService {
             String campaignGuideline,
             Map<String, List<String>> photoData,
             Consumer<String> progress) {
+        return generateBlogPost(
+                restaurantName, infoText, restaurantLink, postType, bloggerName, rating, campaignGuideline, photoData, progress, properties.getGeminiApiKey());
+    }
+
+    public String generateBlogPost(
+            String restaurantName,
+            String infoText,
+            String restaurantLink,
+            String postType,
+            String bloggerName,
+            int rating,
+            String campaignGuideline,
+            Map<String, List<String>> photoData,
+            Consumer<String> progress,
+            String apiKey) {
         if (properties.isUseTestMode()) {
             return promptRepository.loadTestDraft(
                     restaurantName, infoText, restaurantLink, postType, bloggerName, rating, campaignGuideline, photoData);
@@ -58,7 +85,7 @@ public class ContentService {
         String prompt = promptRepository.buildPromptText(
                 restaurantName, infoText, restaurantLink, postType, bloggerName, rating, campaignGuideline, photoData);
         try {
-            String text = contentRepository.generateContent(prompt, photoData, progress);
+            String text = contentRepository.generateContent(prompt, photoData, progress, apiKey);
             if (text == null || text.isBlank()) {
                 throw new RuntimeException("API 응답이 비어 있습니다.");
             }

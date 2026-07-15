@@ -47,7 +47,8 @@ public class BlogJobRunner {
                 job.getRating(),
                 job.getCampaignGuideline(),
                 photoData,
-                job::setMessage);
+                job::setMessage,
+                job.getGeminiApiKey());
         draft = draftSanitizer.sanitizeGeneratedDraft(draft, job.getBloggerName());
         finalizeJob(job, draft, photoData, buildReviewTitle(job), "");
     }

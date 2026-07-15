@@ -51,14 +51,12 @@ export default function App() {
   return (
     <div className="app">
       <aside className="sidebar">
-        <div className="brand">
-          <button
-            onClick={handlePortalNav}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'none', padding: 0 }}
-          >
+        <div className="brand" onClick={handlePortalNav}>
+          <div className="brand-logo">
+            <span className="brand-icon">🌐</span>
             <strong>글로벌</strong>
-            <span>(Geul-o-bel)</span>
-          </button>
+          </div>
+          <span className="brand-sub">GEUL-O-BEL</span>
         </div>
         <nav>
           <NavItem to="/campaign">체험단</NavItem>

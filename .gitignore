@@ -1,7 +1,27 @@
+# 로컬 개별 설정 파일
 application-local.yml
+
+# 빌드 결과물 및 의존성
 backend/target/
 frontend/node_modules/
 frontend/dist/
 .tools/
-output/web_uploads/
+
+# 런타임 임시 산출물 (이미지 업로드 및 다운로드용 Word)
 *.docx
+output/web_uploads/
+
+# 런타임 동적 재생성 파일 (기기별로 맺는 네이버 브라우저 세션 및 대용량 API 캐시)
+output/naver/
+output/campaigns_cache.json
+
+# IDE 및 OS 임시 파일
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp

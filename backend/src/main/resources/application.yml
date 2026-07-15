@@ -31,8 +31,7 @@ studio:
   mock-response-file: ${studio.root-dir}/output/mock_response.txt
   use-test-mode: false
   skip-public-api: false
-  gemini-api-key: ""
-  public-api-key: ""
+  public-api-key: "0534c3645c1fd67b70a05262e52730c8536b6b15c8ca4abf3e5cf456ab330c7b"
   naver-session-file: ${studio.root-dir}/output/naver/session.json
   naver-session-meta-file: ${studio.root-dir}/output/naver/session-meta.json
   code-file: ${studio.root-dir}/output/codes.enc

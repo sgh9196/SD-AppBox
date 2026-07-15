@@ -45,7 +45,7 @@ class CodeServiceTest {
         assertTrue(verifyEmpty.isEmpty());
 
         // 2. Issue a code
-        codeService.issueCode("myUserCode", List.of("geulobel"));
+        codeService.issueCode("myUserCode", List.of("geulobel"), "mock-api-key");
 
         // 3. Verify the code
         List<String> verifySuccess = codeService.verifyCode("myUserCode");
@@ -54,9 +54,10 @@ class CodeServiceTest {
         assertFalse(verifySuccess.contains("marketing"));
 
         // 4. Retrieve all codes
-        Map<String, List<String>> allCodes = codeService.getAllCodes();
+        Map<String, CodeService.CodeDetails> allCodes = codeService.getAllCodes();
         assertEquals(1, allCodes.size());
         assertTrue(allCodes.containsKey("myUserCode"));
+        assertEquals("mock-api-key", allCodes.get("myUserCode").getGeminiApiKey());
 
         // 5. Delete the code
         codeService.deleteCode("myUserCode");

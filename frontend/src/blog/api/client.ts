@@ -185,6 +185,10 @@ export async function fetchMapLink(storeName: string, region: string) {
 
 /** multipart FormData → Job ID. 사진 필드명 = external/interior/menu/product */
 export async function startBlogJob(formData: FormData): Promise<string> {
+  const authCode = sessionStorage.getItem('auth_code') || '';
+  if (authCode) {
+    formData.append('authCode', authCode);
+  }
   const res = await fetch(`${API_BASE}/api/blog/generate`, { method: 'POST', body: formData });
   if (!res.ok) {
     const text = await res.text();
@@ -291,11 +295,11 @@ export async function verifyAuthCode(code: string): Promise<AuthResponse> {
   return res.json();
 }
 
-export async function issueAuthCode(adminCode: string, newCode: string, allowedApps: string[]): Promise<{ success: boolean; message?: string }> {
+export async function issueAuthCode(adminCode: string, newCode: string, allowedApps: string[], geminiApiKey: string): Promise<{ success: boolean; message?: string }> {
   const res = await fetch(`${API_BASE}/api/auth/issue`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ adminCode, newCode, allowedApps }),
+    body: JSON.stringify({ adminCode, newCode, allowedApps, geminiApiKey }),
   });
   if (!res.ok) {
     const errorData = await res.json().catch(() => ({}));
@@ -304,7 +308,12 @@ export async function issueAuthCode(adminCode: string, newCode: string, allowedA
   return res.json();
 }
 
-export async function fetchAuthCodes(adminCode: string): Promise<Record<string, string[]>> {
+export type CodeDetails = {
+  allowedApps: string[];
+  geminiApiKey: string;
+};
+
+export async function fetchAuthCodes(adminCode: string): Promise<Record<string, CodeDetails>> {
   const params = new URLSearchParams({ adminCode });
   const res = await fetch(`${API_BASE}/api/auth/codes?${params}`);
   if (!res.ok) throw new Error('코드 목록 조회 실패');

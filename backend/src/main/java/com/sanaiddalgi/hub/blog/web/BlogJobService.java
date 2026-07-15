@@ -30,7 +30,8 @@ public class BlogJobService {
             String infoText,
             String link,
             String campaignGuideline,
-            Map<String, List<MultipartFile>> uploads) throws IOException {
+            Map<String, List<MultipartFile>> uploads,
+            String apiKey) throws IOException {
         BlogJob job = BlogJob.create();
         job.setContentKind("review");
         job.setStoreName(storeName);
@@ -41,6 +42,7 @@ public class BlogJobService {
         job.setInfoText(infoText);
         job.setLink(link);
         job.setCampaignGuideline(campaignGuideline);
+        job.setGeminiApiKey(apiKey);
         // Tomcat 임시 파일은 요청 종료 후 삭제되므로, 비동기 Job 전에 영구 저장
         job.setPhotoData(mediaService.saveUploadedPhotos(uploads));
         jobs.put(job.getId(), job);

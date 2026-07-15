@@ -43,19 +43,23 @@ public class CodeService {
         if (isAdminCode(code)) {
             return List.of("geulobel", "marketing", "influencer");
         }
-        Map<String, List<String>> db = loadCodes();
-        return db.getOrDefault(code.trim(), List.of());
+        Map<String, CodeDetails> db = loadCodes();
+        CodeDetails details = db.get(code.trim());
+        return details != null ? details.getAllowedApps() : List.of();
     }
 
-    public synchronized void issueCode(String code, List<String> allowedApps) throws Exception {
+    public synchronized void issueCode(String code, List<String> allowedApps, String geminiApiKey) throws Exception {
         if (code == null || code.isBlank()) {
             throw new IllegalArgumentException("코드를 입력해야 합니다.");
+        }
+        if (geminiApiKey == null || geminiApiKey.isBlank()) {
+            throw new IllegalArgumentException("Gemini API Key를 입력해야 합니다.");
         }
         if (isAdminCode(code)) {
             throw new IllegalArgumentException("관리자 코드는 새로 발급할 수 없습니다.");
         }
-        Map<String, List<String>> db = new LinkedHashMap<>(loadCodes());
-        db.put(code.trim(), allowedApps == null ? List.of() : allowedApps);
+        Map<String, CodeDetails> db = new LinkedHashMap<>(loadCodes());
+        db.put(code.trim(), new CodeDetails(allowedApps == null ? List.of() : allowedApps, geminiApiKey.trim()));
         saveCodes(db);
     }
 
@@ -63,18 +67,30 @@ public class CodeService {
         if (code == null || code.isBlank()) {
             return;
         }
-        Map<String, List<String>> db = new LinkedHashMap<>(loadCodes());
+        Map<String, CodeDetails> db = new LinkedHashMap<>(loadCodes());
         if (db.containsKey(code)) {
             db.remove(code);
             saveCodes(db);
         }
     }
 
-    public Map<String, List<String>> getAllCodes() {
+    public Map<String, CodeDetails> getAllCodes() {
         return loadCodes();
     }
 
-    private Map<String, List<String>> loadCodes() {
+    public String getGeminiApiKey(String code) {
+        if (code == null || code.isBlank()) {
+            return null;
+        }
+        if (isAdminCode(code)) {
+            return null;
+        }
+        Map<String, CodeDetails> db = loadCodes();
+        CodeDetails details = db.get(code.trim());
+        return details != null ? details.getGeminiApiKey() : null;
+    }
+
+    private Map<String, CodeDetails> loadCodes() {
         Path file = Path.of(properties.getCodeFile());
         if (!Files.exists(file)) {
             return Map.of();
@@ -82,14 +98,24 @@ public class CodeService {
         try {
             byte[] encrypted = Files.readAllBytes(file);
             String decryptedJson = decrypt(encrypted);
-            return objectMapper.readValue(decryptedJson, new TypeReference<>() {});
+            try {
+                return objectMapper.readValue(decryptedJson, new TypeReference<LinkedHashMap<String, CodeDetails>>() {});
+            } catch (Exception e) {
+                // 하위 호환 마이그레이션: 이전 List<String> 포맷 파싱 시도
+                Map<String, List<String>> oldDb = objectMapper.readValue(decryptedJson, new TypeReference<LinkedHashMap<String, List<String>>>() {});
+                Map<String, CodeDetails> newDb = new LinkedHashMap<>();
+                for (Map.Entry<String, List<String>> entry : oldDb.entrySet()) {
+                    newDb.put(entry.getKey(), new CodeDetails(entry.getValue(), ""));
+                }
+                return newDb;
+            }
         } catch (Exception e) {
             // 복호화 실패 시 빈 데이터베이스 반환
             return Map.of();
         }
     }
 
-    private void saveCodes(Map<String, List<String>> db) throws Exception {
+    private void saveCodes(Map<String, CodeDetails> db) throws Exception {
         Path file = Path.of(properties.getCodeFile());
         Files.createDirectories(file.getParent());
         String json = objectMapper.writeValueAsString(db);
@@ -109,5 +135,36 @@ public class CodeService {
         Cipher cipher = Cipher.getInstance(ALGORITHM);
         cipher.init(Cipher.DECRYPT_MODE, secretKey);
         return new String(cipher.doFinal(encryptedData), StandardCharsets.UTF_8);
+    }
+
+    /**
+     * 보안 코드 상세 정보 데이터 모델.
+     */
+    public static class CodeDetails {
+        private List<String> allowedApps;
+        private String geminiApiKey;
+
+        public CodeDetails() {}
+
+        public CodeDetails(List<String> allowedApps, String geminiApiKey) {
+            this.allowedApps = allowedApps;
+            this.geminiApiKey = geminiApiKey;
+        }
+
+        public List<String> getAllowedApps() {
+            return allowedApps;
+        }
+
+        public void setAllowedApps(List<String> allowedApps) {
+            this.allowedApps = allowedApps;
+        }
+
+        public String getGeminiApiKey() {
+            return geminiApiKey;
+        }
+
+        public void setGeminiApiKey(String geminiApiKey) {
+            this.geminiApiKey = geminiApiKey;
+        }
     }
 }

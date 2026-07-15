@@ -31,6 +31,7 @@ public class BlogJob {
     private String draft;
     private String title;
     private Map<String, List<String>> photoData = Map.of();
+    private String geminiApiKey;
 
     public BlogJob(String id) {
         this.id = id;
@@ -182,5 +183,13 @@ public class BlogJob {
 
     public void setBloggerName(String bloggerName) {
         this.bloggerName = bloggerName;
+    }
+
+    public String getGeminiApiKey() {
+        return geminiApiKey;
+    }
+
+    public void setGeminiApiKey(String geminiApiKey) {
+        this.geminiApiKey = geminiApiKey;
     }
 }

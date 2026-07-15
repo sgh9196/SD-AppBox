@@ -42,8 +42,13 @@ public class ContentRepository {
 
     public String generateContent(
             String promptText, Map<String, List<String>> photoData, Consumer<String> progress) {
+        return generateContent(promptText, photoData, progress, properties.getGeminiApiKey());
+    }
+
+    public String generateContent(
+            String promptText, Map<String, List<String>> photoData, Consumer<String> progress, String apiKey) {
         ObjectNode body = buildRequestBody(promptText, photoData, false);
-        return callGeminiWithRetry(body, progress, false);
+        return callGeminiWithRetry(body, progress, false, apiKey);
     }
 
 
@@ -78,7 +83,7 @@ public class ContentRepository {
                 || lowerMsg.contains("rate limit");
     }
 
-    private String callGeminiWithRetry(ObjectNode body, Consumer<String> progress, boolean webSearch) {
+    private String callGeminiWithRetry(ObjectNode body, Consumer<String> progress, boolean webSearch, String apiKey) {
         List<String> models = modelCandidates();
         RuntimeException lastError = null;
 
@@ -89,7 +94,7 @@ public class ContentRepository {
                     if (attempt == 1 && models.indexOf(model) > 0) {
                         progress.accept("Gemini 모델 전환: " + model);
                     }
-                    return callGemini(model, body);
+                    return callGemini(model, body, apiKey);
                 } catch (RuntimeException e) {
                     lastError = e;
                     if (isModelUnavailable(e)) {
@@ -151,9 +156,9 @@ public class ContentRepository {
         return body;
     }
 
-    private String callGemini(String model, ObjectNode body) {
+    private String callGemini(String model, ObjectNode body, String apiKey) {
         String url = "https://generativelanguage.googleapis.com/v1beta/models/"
-                + model + ":generateContent?key=" + properties.getGeminiApiKey();
+                + model + ":generateContent?key=" + apiKey;
         String responseBody;
         try {
             responseBody = restClient.post()

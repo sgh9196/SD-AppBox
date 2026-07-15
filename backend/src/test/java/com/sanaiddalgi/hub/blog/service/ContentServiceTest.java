@@ -47,7 +47,7 @@ class ContentServiceTest {
                 .thenReturn("테스트 원고");
 
         String draft = contentService.generateBlogPost(
-                "테스트매장", "정보", "http://link", "협찬", 5, Map.of());
+                "테스트매장", "정보", "http://link", "협찬", 5, Map.of(), "mock-api-key");
 
         assertTrue(draft.contains("테스트 원고"));
     }
@@ -58,12 +58,12 @@ class ContentServiceTest {
         when(promptRepository.buildPromptText(
                 anyString(), anyString(), anyString(), anyString(), anyString(), anyInt(), anyString(), anyMap()))
                 .thenReturn("prompt");
-        when(contentRepository.generateContent(anyString(), anyMap(), any()))
+        when(contentRepository.generateContent(anyString(), anyMap(), any(), anyString()))
                 .thenReturn("Gemini 원고");
 
         String draft = contentService.generateBlogPost(
-                "매장", "정보", "link", "협찬", 5,
-                Map.of("external", List.of("/tmp/1.jpg")));
+                "매장", "정보", "link", "협찬", "글로벌", 5, "",
+                Map.of("external", List.of("/tmp/1.jpg")), message -> {}, "mock-api-key");
 
         assertFalse(draft.isBlank());
     }

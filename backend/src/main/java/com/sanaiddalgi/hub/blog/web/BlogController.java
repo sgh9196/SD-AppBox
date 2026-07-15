@@ -32,9 +32,11 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 public class BlogController {
 
     private final BlogJobService blogJobService;
+    private final com.sanaiddalgi.hub.auth.service.CodeService codeService;
 
-    public BlogController(BlogJobService blogJobService) {
+    public BlogController(BlogJobService blogJobService, com.sanaiddalgi.hub.auth.service.CodeService codeService) {
         this.blogJobService = blogJobService;
+        this.codeService = codeService;
     }
 
     @PostMapping("/generate")
@@ -50,10 +52,15 @@ public class BlogController {
             @RequestParam(defaultValue = "") String campaignGuideline,
             @RequestParam(defaultValue = "") String title,
             @RequestParam(defaultValue = "") String userNotes,
+            @RequestParam(defaultValue = "") String authCode,
             HttpServletRequest request) throws IOException {
+        String apiKey = codeService.getGeminiApiKey(authCode);
+        if (apiKey == null || apiKey.isBlank()) {
+            throw new IllegalArgumentException("유효하지 않은 보안 코드이거나 등록된 Gemini API Key가 없습니다.");
+        }
         Map<String, List<MultipartFile>> uploads = collectReviewUploads(request);
         BlogJob job = blogJobService.createJob(
-                storeName, region, postType, bloggerName, rating, infoText, link, campaignGuideline, uploads);
+                storeName, region, postType, bloggerName, rating, infoText, link, campaignGuideline, uploads, apiKey);
         return Map.of("jobId", job.getId());
     }
 

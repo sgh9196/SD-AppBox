@@ -4,7 +4,8 @@ import {
   verifyAuthCode,
   issueAuthCode,
   fetchAuthCodes,
-  deleteAuthCode
+  deleteAuthCode,
+  type CodeDetails
 } from '../../blog/api/client';
 
 export default function AppBoxPage() {
@@ -21,10 +22,11 @@ export default function AppBoxPage() {
   const [adminError, setAdminError] = useState('');
   const [adminCode, setAdminCode] = useState('');
   const [newCodeInput, setNewCodeInput] = useState('');
+  const [newApiKeyInput, setNewApiKeyInput] = useState('');
   const [allowGeulobel, setAllowGeulobel] = useState(false);
   const [allowMarketing, setAllowMarketing] = useState(false);
   const [allowInfluencer, setAllowInfluencer] = useState(false);
-  const [issuedCodes, setIssuedCodes] = useState<Record<string, string[]>>({});
+  const [issuedCodes, setIssuedCodes] = useState<Record<string, CodeDetails>>({});
 
   const handleCardClick = () => {
     setShowModal(true);
@@ -73,6 +75,7 @@ export default function AppBoxPage() {
     setAdminError('');
     setAdminCode('');
     setNewCodeInput('');
+    setNewApiKeyInput('');
     setAllowGeulobel(false);
     setAllowMarketing(false);
     setAllowInfluencer(false);
@@ -120,6 +123,10 @@ export default function AppBoxPage() {
       alert('발급할 코드를 입력하세요.');
       return;
     }
+    if (!newApiKeyInput.trim()) {
+      alert('Gemini API Key를 입력하세요.');
+      return;
+    }
     const apps: string[] = [];
     if (allowGeulobel) apps.push('geulobel');
     if (allowMarketing) apps.push('marketing');
@@ -131,9 +138,10 @@ export default function AppBoxPage() {
     }
 
     try {
-      const res = await issueAuthCode(adminCode, newCodeInput.trim(), apps);
+      const res = await issueAuthCode(adminCode, newCodeInput.trim(), apps, newApiKeyInput.trim());
       if (res.success) {
         setNewCodeInput('');
+        setNewApiKeyInput('');
         setAllowGeulobel(false);
         setAllowMarketing(false);
         setAllowInfluencer(false);
@@ -334,19 +342,23 @@ export default function AppBoxPage() {
                 {/* 코드 발급 양식 */}
                 <form onSubmit={handleIssueCodeSubmit} className="admin-section">
                   <h3>🔑 신규 보안 코드 발급</h3>
-                  <div className="admin-form-row">
+                  <div className="admin-form-group" style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '1rem' }}>
                     <input
                       type="text"
                       placeholder="발급할 보안 코드를 입력하세요"
                       value={newCodeInput}
                       onChange={(e) => setNewCodeInput(e.target.value)}
-                      style={{ flex: 1 }}
+                      style={{ padding: '0.65rem 1rem', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.15)', background: 'rgba(0, 0, 0, 0.2)', color: 'var(--color-text)' }}
                     />
-                    <button type="submit" className="primary-btn" style={{ flex: 'initial', padding: '0.65rem 1.25rem' }}>
-                      발급하기
-                    </button>
+                    <input
+                      type="password"
+                      placeholder="연동할 Gemini API Key를 입력하세요"
+                      value={newApiKeyInput}
+                      onChange={(e) => setNewApiKeyInput(e.target.value)}
+                      style={{ padding: '0.65rem 1rem', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.15)', background: 'rgba(0, 0, 0, 0.2)', color: 'var(--color-text)' }}
+                    />
                   </div>
-                  <div className="admin-checkboxes">
+                  <div className="admin-checkboxes" style={{ marginBottom: '1rem' }}>
                     <label>
                       <input
                         type="checkbox"
@@ -372,6 +384,11 @@ export default function AppBoxPage() {
                       인플루언서 랭킹 (준비 중)
                     </label>
                   </div>
+                  <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                    <button type="submit" className="primary-btn" style={{ padding: '0.65rem 1.5rem' }}>
+                      보안 코드 발급
+                    </button>
+                  </div>
                 </form>
 
                 {/* 발급된 코드 리스트 */}
@@ -387,19 +404,27 @@ export default function AppBoxPage() {
                         <thead>
                           <tr>
                             <th>보안 코드</th>
+                            <th>Gemini API Key</th>
                             <th>허용된 권한</th>
                             <th style={{ width: '60px', textAlign: 'center' }}>관리</th>
                           </tr>
                         </thead>
                         <tbody>
-                          {Object.entries(issuedCodes).map(([code, apps]) => (
+                          {Object.entries(issuedCodes).map(([code, details]) => (
                             <tr key={code}>
                               <td style={{ fontWeight: 700 }}>{code}</td>
+                              <td style={{ fontFamily: 'monospace', fontSize: '0.8rem', color: 'var(--color-text-muted)' }}>
+                                {details.geminiApiKey ? (
+                                  details.geminiApiKey.length <= 12 ? '********' : `${details.geminiApiKey.substring(0, 8)}...${details.geminiApiKey.substring(details.geminiApiKey.length - 4)}`
+                                ) : (
+                                  <span style={{ color: '#ef4444' }}>미설정</span>
+                                )}
+                              </td>
                               <td>
-                                {apps.includes('geulobel') && <span className="admin-badge campaign">글로벌</span>}
-                                {apps.includes('marketing') && <span className="admin-badge blog">성과 분석</span>}
-                                {apps.includes('influencer') && <span className="admin-badge blog" style={{ background: 'rgba(59, 130, 246, 0.15)', color: '#3B82F6', borderColor: 'rgba(59, 130, 246, 0.25)' }}>인플루언서</span>}
-                                {apps.length === 0 && <span style={{ color: 'var(--color-text-muted)' }}>권한 없음</span>}
+                                {details.allowedApps.includes('geulobel') && <span className="admin-badge campaign">글로벌</span>}
+                                {details.allowedApps.includes('marketing') && <span className="admin-badge blog">성과 분석</span>}
+                                {details.allowedApps.includes('influencer') && <span className="admin-badge blog" style={{ background: 'rgba(59, 130, 246, 0.15)', color: '#3B82F6', borderColor: 'rgba(59, 130, 246, 0.25)' }}>인플루언서</span>}
+                                {details.allowedApps.length === 0 && <span style={{ color: 'var(--color-text-muted)' }}>권한 없음</span>}
                               </td>
                               <td style={{ textAlign: 'center' }}>
                                 <button

@@ -42,7 +42,7 @@ public class AuthController {
                     .body(Map.of("success", false, "message", "관리자 권한이 없습니다."));
         }
         try {
-            codeService.issueCode(request.newCode, request.allowedApps);
+            codeService.issueCode(request.newCode, request.allowedApps, request.geminiApiKey);
             return ResponseEntity.ok(Map.of("success", true));
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
@@ -80,5 +80,6 @@ public class AuthController {
         public String adminCode;
         public String newCode;
         public List<String> allowedApps;
+        public String geminiApiKey;
     }
 }
