@@ -1,0 +1,7 @@
+application-local.yml
+backend/target/
+frontend/node_modules/
+frontend/dist/
+.tools/
+output/web_uploads/
+*.docx

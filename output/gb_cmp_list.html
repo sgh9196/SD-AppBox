@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="color-scheme" content="light only" />
+		<meta name="supported-color-schemes" content="light" />
+
+		<title>가보자 체험단</title>
+		
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://xn--o39a04kpnjo4k9hgflp.com">
+		<meta property="og:title" content="가보자체험단">
+		<meta property="og:image" content="https://xn--o39a04kpnjo4k9hgflp.com/img/og.jpg">
+		<meta property="og:description" content="가보자 체험단 | 오직 클라이언트를 위한 국내 1위 마케팅 플랫폼">
+		<meta property="og:site_name" content="가보자체험단">
+
+		<link rel="shortcut icon" href="/favicon_gb.ico" />
+		<link rel="stylesheet" href="/main/css/reset.css" />
+		<link rel="stylesheet" href="/main/css/common.css" />
+		<link rel="stylesheet" href="/main/css/head&foot.css" />
+		<link rel="stylesheet" href="/main/css/sectionCommon.css" />
+
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/Swiper/9.2.0/swiper-bundle.css" />
+		<!--<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" />
+
+		<script src="//code.jquery.com/jquery-latest.js"></script>
+		<script src="//code.jquery.com/jquery-latest.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/Swiper/9.2.0/swiper-bundle.min.js"></script>
+		<!--<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.js"></script>-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"></script>
+
+		<script src="/main/js/common.js"></script>
+		<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=lr9wve1abg&submodules=geocoder"></script>
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d877ec7dd7dff70b6e573af4f0422239&libraries=services"></script>
+	</head>
+
+	<body>
+    <!-- header start -->
+    <!-- index.html type1 class 적용(logo o, 뒤록가기 버튼 x, page tit x) -->
+    <!-- 나머지.html type2 class 적용(logo x ,뒤로가기 버튼 o, page tit o) -->
+    <!-- login 관련.html type3 class 적용(모바일에서 header x) -->
+    <header class="index_header type1 test" id="header">
+		<div class="container">
+			<div class="wrapper margin-c display-f align-items-c max_1400">
+				<h1 class="logo">
+					<a href="/" class="display-b logo_link">
+						<object data="/main/img/logo.svg" class="display-b"></object>
+					</a>
+				</h1>
+				<nav class="gnb">
+					<p class="mo_tit text-align-c">
+						카테고리
+						<button type="button" id="mo_gnb_close_btn"><span class="blind">메뉴 닫기</span></button>
+					</p>
+					<ul class="gnb_list display-f align-items-fs text-align-c">
+						
+						<li class="list_item">
+							<a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?sf=sf" class="list_link display-b ">숏폼 캠페인</a>
+						</li>
+												<li class="list_item">
+							<a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=11" class="list_link display-b on">지역 캠페인</a>
+							<ul class="gnb_sub_list display-f align-items-c">
+								<li class="list_item">
+									<a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=11" class="display-b list_link ">전체</a>
+								</li>
+																<li class="list_item">
+									<a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=11&ct2=1110" class="display-b list_link on">맛집</a>
+								</li>
+																<li class="list_item">
+									<a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=11&ct2=1111" class="display-b list_link ">뷰티</a>
+								</li>
+																<li class="list_item">
+									<a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=11&ct2=1112" class="display-b list_link ">숙박</a>
+								</li>
+																<li class="list_item">
+									<a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=11&ct2=1119" class="display-b list_link ">문화</a>
+								</li>
+																<li class="list_item">
+									<a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=11&ct2=1120" class="display-b list_link ">배달</a>
+								</li>
+																<li class="list_item">
+									<a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=11&ct2=1122" class="display-b list_link ">포장</a>
+								</li>
+																<li class="list_item">
+									<a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=11&ct2=1131" class="display-b list_link ">기타</a>
+								</li>
+															</ul>
+						</li>
+												<li class="list_item">
+							<a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=10" class="list_link display-b ">제품 캠페인</a>
+							<ul class="gnb_sub_list display-f align-items-c">
+								<li class="list_item">
+									<a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=10" class="display-b list_link ">전체</a>
+								</li>
+																<li class="list_item">
+									<a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=10&ct2=1021" class="display-b list_link ">뷰티</a>
+								</li>
+																<li class="list_item">
+									<a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=10&ct2=1020" class="display-b list_link ">패션</a>
+								</li>
+																<li class="list_item">
+									<a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=10&ct2=1022" class="display-b list_link ">식품</a>
+								</li>
+																<li class="list_item">
+									<a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=10&ct2=1012" class="display-b list_link ">생활</a>
+								</li>
+																<li class="list_item">
+									<a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=10&ct2=1015" class="display-b list_link ">기타</a>
+								</li>
+															</ul>
+						</li>
+												<li class="list_item">
+							<a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=14" class="list_link display-b ">기자단 캠페인</a>
+							<ul class="gnb_sub_list display-f align-items-c">
+								<li class="list_item">
+									<a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=14" class="display-b list_link ">전체</a>
+								</li>
+																<li class="list_item">
+									<a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=14&ct2=1414" class="display-b list_link ">기타</a>
+								</li>
+															</ul>
+						</li>
+												
+						<li class="list_item">
+														<a href="/main/secret.html" class="list_link display-b ">시크릿 캠페인</a>
+														<!--
+							<ul class="gnb_sub_list display-f align-items-c">
+								<li class="list_item">
+									<a href="/main/sub_1.html" class="display-b list_link">전체2</a>
+								</li>
+								<li class="list_item">
+									<a href="" class="display-b list_link">맛집</a>
+								</li>
+								<li class="list_item">
+									<a href="" class="display-b list_link">뷰티</a>
+								</li>
+								<li class="list_item">
+									<a href="" class="display-b list_link">숙박</a>
+								</li>
+								<li class="list_item">
+									<a href="" class="display-b list_link">문화</a>
+								</li>
+								<li class="list_item">
+									<a href="" class="display-b list_link">배달</a>
+								</li>
+								<li class="list_item">
+									<a href="" class="display-b list_link">테이크아웃</a>
+								</li>
+								<li class="list_item">
+									<a href="" class="display-b list_link">기타</a>
+								</li>
+							</ul>
+							-->
+						</li>
+						<li class="list_item">
+							<a href="/main/sub_1.html" class="list_link display-b">고객센터</a>
+							<ul class="gnb_sub_list display-f align-items-c">
+								<li class="list_item">
+									<a href="/main/notification.html" class="display-b list_link">공지사항</a>
+								</li>
+								<li class="list_item">
+									<a href="/main/faq.html" class="display-b list_link">자주 묻는 질문</a>
+								</li>
+								<li class="list_item">
+									<a href="/main/question.html" class="display-b list_link">1:1 문의</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+				<div class="search form_area margin-r-0">
+					<div class="form">
+						<form action="https://xn--o39a04kpnjo4k9hgflp.com/cmp/" method="get">
+							<fieldset>
+								<legend class="blind">검색</legend>
+								<div class="form_cont form_cont1">
+									<div class="form_wrap display-f justify-c align-items-c">
+										<div class="input_box">
+											<label for="keyword" class="blind">검색</label>
+											<input name="stx" type="text" id="keyword" value="" required="" class="display-b" placeholder="캠페인명 혹은 지역 검색" />
+										</div>
+										<button type="submit" id="search_btn"><span class="blind">검색</span></button>
+										<button type="button" id="mo_search_close_btn"><span class="blind">검색 닫기</span></button>
+									</div>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+				<div class="user">
+					<ul class="user_list display-f align-items-c">
+						<li class="list_item">
+														<a href="/main/login.html" class="list_link display-b">로그인</a>
+													</li>
+						<li class="list_item">
+							<!-- <a href="/main/register.html" class="list_link display-b">회원가입</a> -->
+							<!-- 로그인 되었을 때 -->
+							<a href="/main/notification.html" class="list_link display-b">고객센터</a>
+						</li>
+					</ul>
+				</div>
+				<div class="mo_area">
+					<a type="button" class="display-b back_btn"><span class="blind">뒤로가기</span></a>
+					<h2 class="mo_tit display-f align-items-c justify-c"></h2>
+					<div class="mo_search">
+						<a type="button" class="display-b"><span class="blind">검색</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+    </header>
+
+    <script>
+		$(document).ready(function () {
+			//fade 효과
+			setTimeout(function () {
+				$(".index_header").stop().addClass("on");
+				$("main").stop().addClass("on");
+			}, 50);
+
+			//gnb hover effect
+			const indexHeaderContainer = $(".index_header > .container");
+			const gnbLink = $(".index_header .gnb_list > .list_item > .list_link");
+			const gnbSubList = $(".index_header .gnb_list .gnb_sub_list");
+
+			gnbLink.on("mouseenter", function () {
+				if ($(this).next().length > 0) {
+					gnbLink.next().stop().removeClass("on");
+					$(this).next().stop().addClass("on");
+					indexHeaderContainer.stop().addClass("on");
+				} else {
+					gnbLink.next().stop().removeClass("on");
+					indexHeaderContainer.stop().removeClass("on");
+				}
+			});
+			indexHeaderContainer.on("mouseleave", function () {
+				gnbLink.next().stop().removeClass("on");
+				indexHeaderContainer.stop().removeClass("on");
+			});
+
+			//로그인 후 프로필 mouseenter일 때
+			$(".index_header .profile").on("mouseenter", function () {
+				$(this).next().stop().addClass("on");
+			});
+			//프로필 하위 메뉴 펼쳤을 때 mouseleave일 때 하위 메뉴 닫기
+			$(document).on("mousemove", function (event) {
+				let target = event.target;
+				if ($(".index_header .user .sub_list").hasClass("on")) {
+					if (!$(target).closest(".index_header .user .sub_list").length && !$(target).closest(".index_header .profile").length) {
+						$(".index_header .user .sub_list").stop().removeClass("on");
+					}
+				}
+			});
+
+			//모바일 gnb 닫기 버튼 클릭 시 gnb 닫기
+			$(".index_header #mo_gnb_close_btn").on("click", function () {
+				$(".index_header .gnb").stop().removeClass("on");
+				scrollAble();
+			});
+
+			//모바일 검색 버튼 클릭 시 검색창 보이기
+			$(".mo_search a").on("click", function () {
+				console.log();
+				$(this).parent().stop().addClass("off");
+				$(".index_header .search").stop().addClass("on");
+				// $(".index_header .search").hide();
+			});
+			$("#mo_search_close_btn").on("click", function () {
+				$(".index_header .search").stop().removeClass("on");
+				$(".mo_search").stop().removeClass("off");
+			});
+
+			//resize시 css 조절
+			$(window).resize(function () {
+				if ($(window).width() > 733) {
+					$(".index_header .search").stop().removeClass("on");
+					$(".mo_search").stop().removeClass("off");
+					if ($(".index_header .gnb").hasClass("on")) {
+						$(".index_header .gnb").stop().removeClass("on");
+						scrollAble();
+					}
+				}
+			});
+      });
+    </script>
+    <!-- header end -->
+		
+	
+	<link rel='stylesheet' href='/main/css/popup.css' />	
+	
+	<script>
+		var g5_cookie_domain = "";
+		
+		// 쿠키 입력
+		function set_cookie(name, value, expirehours, domain)
+		{
+			var today = new Date();
+			today.setTime(today.getTime() + (60*60*1000*expirehours));
+			document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + today.toGMTString() + ";";
+			if (domain) {
+				document.cookie += "domain=" + domain + ";";
+			}
+		}
+
+		// 쿠키 얻음
+		function get_cookie(name)
+		{
+			var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+			if (match) return unescape(match[2]);
+			return "";
+		}
+
+		// 쿠키 지움
+		function delete_cookie(name)
+		{
+			var today = new Date();
+
+			today.setTime(today.getTime() - 1);
+			var value = get_cookie(name);
+			if(value != "")
+				document.cookie = name + "=" + value + "; path=/; expires=" + today.toGMTString();
+		}
+	</script>
+	<link rel="stylesheet" href="/main/css/sub_1.css" />
+	
+    <!-- main start -->
+    <main class="sub_main sub_1_main" id="main" data-title="">
+      <div class="container">
+        <div class="wrapper  padding-b100 padding-t60 mo-padding-t60">
+          <!-- sec 1 start -->
+			<form id="filter_form">
+				<input type="hidden" id="f_ct1" name="ct1" value="11">
+				<input type="hidden" id="f_ct2" name="ct2" value="1110">
+				<input type="hidden" id="f_channel" name="channel" value="">
+				<input type="hidden" id="f_sort" name="sst" value="">
+				<input type="hidden" id="f_stx" name="stx" value="">
+				<input type="hidden" id="f_page" name="page" value="0">
+				<input type="hidden" id="f_list" name="list" value="20">
+				<input type="hidden" id="lc" name="lc" value="">
+				<input type="hidden" id="st" name="st" value="">
+				<input type="hidden" id="sf" name="sf" value="">
+				<input type="hidden" id="empty" name="empty" value="0">
+			</form>
+						
+          <section class="sec_1" id="sec_1">
+            <div class="container">
+
+              <div class="wrapper max_1400 margin-c">
+				                  <div class="tit_area padding-b30 mo-padding-b60 display-f align-items-c">
+                  <h2 class="tit">지역 선택</h2>
+                  <div class="local_tap_area">
+					                    <button type="button" class="all_btn">전체</button>
+                    <div class="local_tap_menu_area">
+                      <div class="cont">
+                        <div class="wrap">
+                          <p class="tit" data-place="">지역 선택</p>
+                          <ul class="display-g">
+                            <li class="list_item local_btn"><a href="/cmp/?&ct1=11&ct2=1110" class="list_link on display-b" type="button" data-place="전체">전체</a></li>
+                            <li class="list_item local_btn" ><a href="/cmp/?&ct1=11&ct2=1110&lc=서울" class="list_link display-b" type="button" data-place="서울">서울</a></li>
+                            <li class="list_item local_btn"><a href="/cmp/?&ct1=11&ct2=1110&lc=경기" class="list_link display-b" type="button" data-place="경기">경기</a></li>
+                            <li class="list_item local_btn"><a href="/cmp/?&ct1=11&ct2=1110&lc=인천" class="list_link display-b" type="button" data-place="인천">인천</a></li>
+                            <li class="list_item local_btn"><a href="/cmp/?&ct1=11&ct2=1110&lc=대구" class="list_link display-b" type="button" data-place="대구">대구</a></li>
+                            <li class="list_item local_btn"><a href="/cmp/?&ct1=11&ct2=1110&lc=부산" class="list_link display-b" type="button" data-place="부산">부산</a></li>
+                            <li class="list_item local_btn"><a href="/cmp/?&ct1=11&ct2=1110&lc=대전" class="list_link display-b" type="button" data-place="대전">대전</a></li>
+                            <li class="list_item local_btn"><a href="/cmp/?&ct1=11&ct2=1110&lc=광주" class="list_link display-b" type="button" data-place="광주">광주</a></li>
+                            <li class="list_item local_btn"><a href="/cmp/?&ct1=11&ct2=1110&lc=강원" class="list_link display-b" type="button" data-place="강원">강원</a></li>
+                            <li class="list_item local_btn"><a href="/cmp/?&ct1=11&ct2=1110&lc=경남" class="list_link display-b" type="button" data-place="경남">경남</a></li>
+                            <li class="list_item local_btn"><a href="/cmp/?&ct1=11&ct2=1110&lc=경북" class="list_link display-b" type="button" data-place="경북">경북</a></li>
+                            <li class="list_item local_btn"><a href="/cmp/?&ct1=11&ct2=1110&lc=전남" class="list_link display-b" type="button" data-place="전남">전남</a></li>
+                            <li class="list_item local_btn"><a href="/cmp/?&ct1=11&ct2=1110&lc=전북" class="list_link display-b" type="button" data-place="전북">전북</a></li>
+                            <li class="list_item local_btn"><a href="/cmp/?&ct1=11&ct2=1110&lc=충남" class="list_link display-b" type="button" data-place="충남">충남</a></li>
+                            <li class="list_item local_btn"><a href="/cmp/?&ct1=11&ct2=1110&lc=충북" class="list_link display-b" type="button" data-place="충북">충북</a></li>
+                            <li class="list_item local_btn"><a href="/cmp/?&ct1=11&ct2=1110&lc=울산" class="list_link display-b" type="button" data-place="울산">울산</a></li>
+                            <li class="list_item local_btn"><a href="/cmp/?&ct1=11&ct2=1110&lc=세종" class="list_link display-b" type="button" data-place="세종">세종</a></li>
+							<li class="list_item local_btn"><a href="/cmp/?&ct1=11&ct2=1110&lc=제주" class="list_link display-b" type="button" data-place="제주">제주</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+								
+
+                <div class="cate_tap_area display-f align-items-c">
+					
+																  <ul class="cate_tap_menu_list tap_menu type1 left display-f align-items-c">
+						<li class="list_item "><a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=11" class="list_link display-b">전체</a></li>
+												<li class="list_item on"><a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=11&ct2=1110" class="list_link display-b">맛집</a></li>
+												<li class="list_item "><a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=11&ct2=1111" class="list_link display-b">뷰티</a></li>
+												<li class="list_item "><a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=11&ct2=1112" class="list_link display-b">숙박</a></li>
+												<li class="list_item "><a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=11&ct2=1119" class="list_link display-b">문화</a></li>
+												<li class="list_item "><a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=11&ct2=1120" class="list_link display-b">배달</a></li>
+												<li class="list_item "><a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=11&ct2=1122" class="list_link display-b">포장</a></li>
+												<li class="list_item "><a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=11&ct2=1131" class="list_link display-b">기타</a></li>
+											  </ul>
+											
+					
+                  <div class="cate_tap_util_area right display-f align-items-c margin-r-0">
+										
+												<div class="wrap">
+						  <button type="button" class="btn" id="order_channel_btn"><span>전체</span></button>
+						  <ul id="order_channel">
+							<li class="list_item on" data-channel=""><i class="display-i-b"></i><span>전체</span></li>
+							<li class="list_item" data-channel="blog"><i class="display-i-b"></i><span>블로그</span></li>
+							<li class="list_item" data-channel="insta"><i class="display-i-b"></i><span>인스타그램</span></li>
+						  </ul>
+						</div>
+											                    <div class="wrap">
+                      <button type="button" class="btn" id="order_sort_btn"><span>최신순</span></button>
+                      <ul id="order_sort">
+                        <li class="list_item on" data-sst="recent" data-sod="desc"><i class="display-i-b"></i><span>최신순</span></li>
+                        <li class="list_item" data-sst="popular" data-sod="desc"><i class="display-i-b"></i><span>인기순</span></li>
+                        <li class="list_item" data-sst="deadline" data-sod="ASC"><i class="display-i-b"></i><span>마감임박순</span></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+				
+                <div class="list_area padding-t30">
+                  <ul class="display-g flex-wrap" id="sub_list">
+					                  </ul>
+				  
+				  <div class="loading" >
+					  <div class="loader loader1 loader-black loader-1"></div>
+					  <div class="loader loader2 loader-black loader-1"></div>
+					  <div class="loader loader3 loader-black loader-1"></div>
+				  </div>
+			
+				  <div class="no_data text-align-c">캠페인이 없습니다</div>
+
+                </div>
+              </div>
+            </div>
+          </section>
+		 
+          <script>
+		  
+			let is_load = false;
+			
+			$(document).ready(function(){
+
+				let start = $("#f_page").val();
+				const list = $("#f_list").val();
+
+				// cmpMainLoad("append");
+				cmpMainLoad("append");
+				
+				$(document).on("click","#order_channel li",function(){
+					const channel = $(this).data("channel");
+					
+					$("#f_channel").val(channel);
+					
+					cmpMainLoad("html");
+				});
+				
+				$(document).on("click","#order_sort li",function(){
+					const sst = $(this).data("sst");
+					const sod = $(this).data("sod");
+
+					$("#f_sort").val(sst);
+					$("#f_sod").val(sod);
+
+					cmpMainLoad("html");
+				});
+
+
+
+				$(window).scroll(function() {
+					let empty = $("#empty").val();
+					
+					if(empty == 0){
+
+						let scrollData = $(window).scrollTop();
+						let windowHeight = window.innerHeight;
+						let documentHeight = $(document).height();
+
+						if (scrollData + windowHeight >= (documentHeight - 100)) {
+							cmpMainLoad("append");
+							// console.log(scrollData + " / " + windowHeight + " / " + (scrollData + windowHeight) + " > " + documentHeight );
+							//start = $("#f_page").val();
+							//list = $("#f_list").val();
+							
+							/*(
+							start++;
+							
+							
+							console.log(start, pp);
+
+							$("#f_page").val(pp);
+							*/
+						}
+					}
+				});
+				
+			});
+		  
+			function cmpMainLoad(type){
+				
+				if (is_load) {
+					return false;
+				}
+				if(type == "html"){
+					$("#f_page").val(0);
+				}
+				
+
+				const data = $("#filter_form").serialize();
+
+				$.ajax({
+				  url: "/main/ajax/_ajax.cmpSubList.php",
+				  type: "POST", 
+				  data: data,
+				  
+				  beforeSend: function() {
+					  // console.log("로딩");
+					  $(".loading").slideDown();
+					  is_load = true;
+				  },
+				  
+				  complete: function() {
+					// console.log("로딩끝");
+					$(".loading").hide();
+					is_load = false;
+				  },
+				  
+				  success: function(data) {
+
+					const nowPage = $("#f_page").val();
+
+					if(type == "append"){
+						
+						let start = $("#f_page").val();
+						const list = $("#f_list").val();
+						let pp = (start+1) * list;
+						$("#f_page").val(parseInt(start)+1);
+						console.log($("#f_page").val() + 'pg');
+						
+						$("#sub_list").append(data);
+					}else{
+						$("#f_page").val(0);
+						$("#sub_list").html(data);
+					}
+					
+					if(nowPage == 0 && data == ""){
+						$(".no_data").show();			
+					}
+
+					if(data == ""){
+						$("#empty").val(1);
+					}
+					
+				  },
+				  error: function(xhr, status, error) {
+					// console.error("Error: " + error); // 오류 메시지 출력
+					}
+				 
+				});
+				
+			}
+		  
+            // mo tab메뉴에서 마우스 드래그 구현
+            function tabDrag() {
+              if ($(window).width() <= 1183) {
+                const slider = document.querySelector(".sec_1 .cate_tap_menu_list");
+                let isDown = false;
+                let startX;
+                let scrollLeft;
+
+                slider.addEventListener("mousedown", (e) => {
+                  isDown = true;
+                  startX = e.pageX - slider.offsetLeft;
+                  scrollLeft = slider.scrollLeft;
+                });
+                slider.addEventListener("mouseleave", () => {
+                  isDown = false;
+                });
+                slider.addEventListener("mouseup", () => {
+                  isDown = false;
+                });
+                slider.addEventListener("mousemove", (e) => {
+                  if (!isDown) return;
+                  e.preventDefault();
+                  const x = e.pageX - slider.offsetLeft;
+                  const walk = (x - startX) * 3; //scroll-fast
+                  slider.scrollLeft = scrollLeft - walk;
+                  // console.log(walk);
+                });
+              }
+            }
+
+            $(document).ready(function () {
+              tabDrag(); // 초기실행
+
+              $(window).resize(function () {
+                // console.log($(window).width());
+                tabDrag();
+              });
+
+              //지역 선택 '전체'클릭 했을 때
+              $(".sec_1 .tit_area .all_btn").on("click", function () {
+                if ($(".local_tap_menu_area").is(":visible")) {
+                  $(this).next().stop().hide();
+                } else {
+                  $(this).next().stop().show();
+                }
+              });
+              //지역 선택했을 때
+              $(".local_tap_menu_area ul li a").on("click", function () {
+                $(".local_tap_menu_area ul li a").stop().removeClass("on");
+                $(this).stop().addClass("on");
+              });
+              $(".local_tap_menu_area").on("mouseleave", function () {
+                $(this).stop().hide();
+              });
+
+              //분야별 카테코리 클릭 했을 때(전체, 맛집, 뷰티...)
+              $(".sec_1 .cate_tap_menu_list .list_item").on("click", function () {
+                $(".sec_1 .cate_tap_menu_list .list_item").stop().removeClass("on");
+                $(this).stop().addClass("on");
+              });
+
+              //우측 필터의 버튼 클릭했을 때 하위 메뉴 보이기
+              $(".sec_1 .cate_tap_util_area .btn").on("click", function () {
+                if ($(".sec_1 .cate_tap_util_area ul").not($(this).next()).is(":visible")) {
+                  $(".sec_1 .cate_tap_util_area ul").not($(this).next()).stop().removeClass("on");
+                }
+                if ($(this).next().hasClass("on")) {
+                  $(this).next().stop().removeClass("on");
+                } else {
+                  $(this).next().stop().addClass("on");
+                }
+              });
+
+              /*
+              //하위 메뉴에서 마우스 벗어났을 때 사라지기
+              $(".sec_1 .cate_tap_util_area ul").on("mouseleave", function () {
+                $(this).stop().removeClass("on");
+              });
+              */
+
+              //우측 필터의 하위 리스트 클릭 했을 때
+              $(".sec_1 .cate_tap_util_area ul li").on("click", function () {
+                let txt = $(this).children("span").text();
+                $(this).parent("ul").children().stop().removeClass("on");
+                $(this).stop().addClass("on");
+                $(this).parents("ul").prev(".btn").children("span").text(txt);
+              });
+
+              //하위 메뉴 펼쳤을 때 다른 부분 클릭시 하위 메뉴 닫기
+              $(document).on("click", function (event) {
+                let target = event.target;
+                if (!$(target).closest(".sec_1 .cate_tap_util_area").length) {
+                  $(".sec_1 .cate_tap_util_area ul").removeClass("on");
+                }
+                if (!$(target).closest(".local_tap_menu_area").length && !$(target).closest(".sec_1 .tit_area .all_btn").length) {
+                  $(".local_tap_menu_area").hide();
+                } else {
+                }
+              });
+            });
+          </script>
+        </div>
+      </div>
+    </main>
+    <!-- main end -->
+
+    <!-- mo gnb start -->
+    <!--   -->
+    <nav class="mo_gnb">
+      <ul class="display-g text-align-c">
+        <li class="list_item">
+          <a href="/" class="list_link on display-f align-items-c justify-c flex-wrap"><i class="display-b margin-c home"></i><span>홈</span></a>
+        </li>
+        <li class="list_item">
+          <a type="button" class="list_link cate_btn display-f align-items-c justify-c flex-wrap"><i class="display-b margin-c category"></i><span>카테고리</span></a>
+        </li>
+        <li class="list_item">
+          <a href="https://xn--o39a04kpnjo4k9hgflp.com/cmp/?ct1=11" class="list_link display-f align-items-c justify-c flex-wrap"><i class="display-b margin-c campaign"></i><span>캠페인</span></a>
+        </li>
+        <li class="list_item">
+          <a href="/main/notification.html" class="list_link display-f align-items-c justify-c flex-wrap"><i class="display-b margin-c service"></i><span>고객센터</span></a>
+        </li>
+				<li class="list_item">
+          <a href="/main/login.html" class="list_link display-f align-items-c justify-c flex-wrap"><i class="display-b margin-c mypage"></i><span>로그인</span></a>
+        </li>
+		      </ul>
+    </nav>
+    <script>
+      //모바일 - 카테고리 버튼 클릭 시 gnb 보이기
+      $(document).ready(function () {
+        $(".mo_gnb .cate_btn").on("click", function () {
+          $(".index_header .gnb").stop().addClass("on");
+          scrollDisable();
+        });
+      });
+    </script>
+    <!-- mo gnb end -->    <!-- pop area(privacy) start -->
+	    <div class="pop_area privacy">
+      <div class="container">
+        <div class="wrapper">
+          <div class="pop_cont">
+            <div class="pop_wrap">
+              <h5 class="text-align-c">개인정보처리방침</h5>
+				<div class="dt">
+				<ul>
+					<li>가보자체험단을 통해 제작된 리뷰 콘텐츠 내용에는 대가성 문구(대가성 라벨, #AD, #협찬 등)가 반드시 포함되어 있어야 합니다.</li>
+					<li>가보자체험단 크리에이터는 선정된 캠페인의 미션을 모두 수행해야할 의무가 있습니다.</li>
+					<li>업체사정 또는 요청에 의해 선정 크리에이터의 수 또는 캠페인 내용이 변경될 수 있습니다.</li>
+					<li>가보자체험단을 통해 등록한 콘텐츠 내용(이미지, 영상, 본문 등)은 가보자체험단 및 광고주에 의해 활용될 수 있습니다.</li>
+					<li>정당한 사유 없이 콘텐츠 등록기간 내 리뷰콘텐츠를 작성하지 않을 경우 제공상품 또는 용역의 대가를 환불해야 하며, 관련 법 조항(형법 제 347조)에 따라 법적 처벌 대상이 될 수 있습니다.</li>
+					<li>등록한 콘텐츠의 유지기간(6개월) 미준수 시 제공내역에 대한 비용이 청구될 수 있습니다.</li>
+					<li>제공내역은 타인에게 양도 및 판매를 허용하지 않습니다. 적발 시 제공내역에 대한 비용이 청구될 수 있습니다.</li>
+				</ul>
+				  
+				<div class="table_form">
+					<table>
+						<thead>
+							<tr>
+								<th>목적</th>
+								<th>항목</th>
+								<th>보유 및 이용기간</th>
+							</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td>캠페인 선정 및 <br>
+								진행시 사용</td>
+							<td>
+								회원정보 (이름, 생년월일, 성별, 휴대전화번호, 캠페인 참여를 위한 추가 개인정보) <br>배송정보 (이름, 휴대전화번호, 주소)
+							</td>
+							<td>
+								회원정보 (이름, 생년월일, 성별, 휴대전화번호, 캠페인 참여를 위한 추가 개인정보)<br>
+								: 캠페인 종료 후 1개월<br>
+								배송정보 (이름, 휴대전화번호, 주소)<br>
+								: 캠페인 신청 후 3개월
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+				</div>
+            </div>
+          </div>
+          <button type="button" class="close_btn type1 display-i-b">닫기</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      //캠페인 동의 전문보기 클릭 시
+      $(document)
+        .on("click", ".pop_area.privacy .close_btn", function () {
+          $(".pop_area.privacy").stop().hide();
+          scrollAble();
+        });
+    </script>	
+	<!-- pop area(review_guide) start -->
+	        <div class="pop_area review_guide">
+            <div class="container">
+                <div class="wrapper text-align-c">
+                    <div class="cont cont1">
+                        <div class="top display-f">
+                            <div class="left padding-t30 padding-b30 bg_gray"><img src="/main/img/review_guide_img2.png" alt="" class="margin-c display-b" /></div>
+                            <div class="right padding-t30 padding-b30 bg_light_green"><img src="/main/img/review_guide_img3.png" alt="" class="margin-c display-b" /></div>
+                        </div>
+                        <div class="bottom">
+                            <p class="txt1 bold">촬영</p>
+                            <p>- '4K 30fps' 혹은 'HD 30fps'로 촬영 권장 (갤럭시,아이폰 고화질 설정 가능)</p>
+                            <p>- 촬영 시 HDR 끄기</p>
+                            <p class="bold">- 여백이 적은 세로형으로 촬영<em class="red">★</em></p>
+                            <p class="bold">- 단순 사진 이어붙히기 형식 금지 (사진이 영상 타임에 30% 이상 할당될 시 반려 대상)<em class="red">★</em></p>
+                            <button type="button" class="display-b next_btn" data-num="1">다음</button>
+                        </div>
+                    </div>
+                    <div class="cont cont2">
+                        <div class="top display-f">
+                            <div class="right padding-t30 padding-b30 bg_light_green"><img src="/main/img/review_guide_img4.png" alt="" class="margin-c display-b" /></div>
+                            <div class="left padding-t30 padding-b30 bg_gray"><img src="/main/img/review_guide_img5.png" alt="" class="margin-c display-b" /></div>
+                        </div>
+                        <div class="bottom">
+                            <p class="txt1 bold">영상</p>
+                            <p>- 편집 후 영상 추출 시 1080*1920 / 30fps 권장</p>
+                            <p class="bold">- 업로드 시 고화질로 설정<em class="red">★</em></p>
+                            <p>(영상을 폰으로 옮길 때는 카톡보다 구글 드라이브 권장)</p>
+                            <button type="button" class="display-b next_btn" data-num="2">다음</button>
+                        </div>
+                    </div>
+                    <div class="cont cont3">
+                        <div class="top padding-t40">
+                            <img src="/main/img/review_guide_img6.png" alt="" style="width: 70%; max-width: 294px" />
+                        </div>
+                        <div class="bottom">
+                            <p class="txt1 bold">오디오</p>
+                            <p>- 내레이션 녹음은 최대한 깔끔하게 (아이폰,갤럭시로 충분)</p>
+                            <p>- 내레이션 음성 높낮이 구분 적용</p>
+                            <p>- 내래이션과 BGM 동시 적용 시 방해되지 않도록 조정</p>
+                            <p class="bold">- 적절한 BGM 및 사운드 효과 1회 이상 권장<em class="red">★</em></p>
+                            <button type="button" class="display-b next_btn" data-num="3">다음</button>
+                        </div>
+                    </div>
+                    <div class="cont cont4">
+                        <div class="top display-f">
+                            <div class="left padding-t30 padding-b30 bg_gray"><img src="/main/img/review_guide_img7.png" alt="" class="margin-c display-b" /></div>
+                            <div class="right padding-t30 padding-b30 bg_light_green"><img src="/main/img/review_guide_img8.png" alt="" class="margin-c display-b" /></div>
+                        </div>
+                        <div class="bottom">
+                            <p class="txt1 bold">텍스트</p>
+                            <p>- 가독성에 좋은 크기와 글씨체로 적용 권장</p>
+                            <p>- 강조할 텍스트는 색깔 또는 효과 적용 권장</p>
+                            <p class="bold">- 텍스트 위치는 인스타 프로필, 좋아요, 댓글 등에 가려지지 않는 곳에 적용<em class="red">★</em></p>
+
+                            <button type="button" class="display-b close">완료</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            $(document).ready(function () {
+                let reviewGuidePop = ".pop_area.review_guide";
+                let reviewGuideCont = ".pop_area.review_guide .cont";
+                let reviewGuideCloseBtn = ".pop_area.review_guide .close";
+
+                //가이드 버튼 클릭 시 팝업 노출
+                $(document).on("click", ".guide_btn", function () {
+                    $(reviewGuidePop).stop().fadeIn();
+                });
+                //다음 버튼 클릭 시 다음 컨텐츠 노출
+                $(document).on("click", ".next_btn", function () {
+                    let num = $(this).data("num");
+                    $(reviewGuideCont + num)
+                        .stop()
+                        .hide();
+                    $(reviewGuideCont + (num + 1))
+                        .stop()
+                        .show();
+                });
+                //완료 버튼 클릭 시 팝업 닫기
+                $(document).on("click", reviewGuideCloseBtn, function () {
+                    $(reviewGuidePop).stop().hide();
+                    $(reviewGuideCont).stop().hide();
+                    $(reviewGuideCont + ".cont1")
+                        .stop()
+                        .show();
+                });
+            });
+        </script>	
+	<link rel="stylesheet" href="/main/css/pop.css" />
+
+    <!-- footer start -->
+    <footer class="index_footer" id="footer">
+      <div class="container padding-t70 padding-b70 mo-padding-t100 mo-padding-b100">
+        <div class="wrapper max_1400 margin-c">
+          <ul class="top padding-b20 mo-padding-b40 display-f align-items-c">
+			<!--
+            <li class="list_item">
+              <a href="" class="list_link display-b">이용약관</a>
+            </li>
+			-->
+            <li class="list_item">
+              <a href="javascript:" class="list_link privacy_btn display-b">개인정보처리방침</a>
+            </li>
+            <li class="list_item">
+              <a href="/main/notification.html" class="list_link display-b">고객센터</a>
+            </li>
+            <li class="list_item">
+              <a href="mailto:﻿gaboja_adm@naver.com?subject=광고 문의 입니다." class="list_link display-b">광고문의</a>
+            </li>
+          </ul>
+          <ul class="middle padding-b20 mo-padding-b20">
+            <li class="list_item">
+			컴퍼니 인포 COMPANY INFO<span class="pc_only"> | </span><br class="mo_br" />대표이사 : 이승종  | 개인정보보호책임자 : 이승종 			</li>
+            <li class="list_item">
+			 사업자등록번호 :  834-88-01109 <span class="pc_only"> | </span><br class="mo_br" />통신판매업신고 : 제 1111-서울강남-11111호 			</li>
+            <li class="list_item">
+			 주소 : 서울 강서구 마곡동 799-2 푸리마타워 815호 			</li>
+            <li class="list_item">
+			 메일 : <a href="mailto:gaboja_adm@naver.com"> gaboja_adm@naver.com</a>  | 고객센터 <a href="tel:070-7777-4943"> 070-7777-4943</a>			</li>
+          </ul>
+          <p class="copy mo-padding-b40"><span>Copyright (c)</span> 가보자체험단 <span>Allright reserved.</span></p>
+          <ul class="util display-f align-items-c">
+				<li class="list_item"><a href="http://pf.kakao.com/_xaxjtPG" class="list_link display-b kakao" target="_blank" ><span class="blind">kakao</span></a></li>          </ul>
+        </div>
+      </div>
+    </footer>
+	<script>
+		 $(document)
+		  .on("click", ".privacy_btn", function () {
+			$(".pop_area.privacy").stop().fadeIn();
+			scrollDisable();
+		 })
+	</script>
+    <!-- footer end -->
+  </body>
+</html>

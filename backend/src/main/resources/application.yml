@@ -1,0 +1,44 @@
+spring:
+  profiles:
+    active: local
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 100MB
+
+server:
+  port: 8080
+
+studio:
+  root-dir: ${user.dir}
+  gemini-model: gemini-2.5-flash
+  gemini-temperature: 0.85
+  gemini-retry-max-attempts: 4
+  gemini-retry-backoff-ms: 5000
+  gemini-fallback-models:
+    - gemini-2.5-flash-lite
+  default-campaign-region: 대전
+  campaign-cache-ttl-minutes: 30
+  prompt-file: ${studio.root-dir}/prompt/prompt.txt
+  prompt-base-file: ${studio.root-dir}/prompt/prompt-base.txt
+  prompt-general-file: ${studio.root-dir}/prompt/prompt-general.txt
+  general-blog-web-search-enabled: true
+  output-dir: ${studio.root-dir}/output
+  photos-dir: ${studio.root-dir}/photos
+  web-upload-dir: ${studio.root-dir}/output/web_uploads
+  default-docx: preview.docx
+  campaign-cache-file: ${studio.root-dir}/output/campaigns_cache.json
+  mock-response-file: ${studio.root-dir}/output/mock_response.txt
+  use-test-mode: false
+  skip-public-api: false
+  gemini-api-key: ""
+  public-api-key: ""
+  naver-session-file: ${studio.root-dir}/output/naver/session.json
+  naver-session-meta-file: ${studio.root-dir}/output/naver/session-meta.json
+  code-file: ${studio.root-dir}/output/codes.enc
+  naver-playwright-headless: false
+  naver-playwright-slow-mo-ms: 50
+  naver-login-timeout-ms: 300000
+  naver-editor-action-timeout-ms: 20000
+  naver-editor-load-timeout-ms: 90000
+  naver-keep-browser-open: true

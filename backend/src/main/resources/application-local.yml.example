@@ -1,0 +1,7 @@
+# Copy to application-local.yml (gitignored) and fill in keys.
+
+studio:
+  gemini-api-key: YOUR_GEMINI_KEY
+  public-api-key: YOUR_PUBLIC_DATA_KEY
+  use-test-mode: false
+  skip-public-api: false
