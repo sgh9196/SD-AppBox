@@ -59,7 +59,7 @@ RUN java -cp "app.jar:dependency/*" com.microsoft.playwright.CLI install --with-
 
 # VNC 디스플레이 설정
 ENV DISPLAY=:99
-ENV RESOLUTION=1280x800x24
+ENV RESOLUTION=1024x768x16
 
 EXPOSE 8080
 ENTRYPOINT ["./entrypoint.sh"]

@@ -19,5 +19,5 @@ websockify --web /usr/share/novnc 6080 localhost:5900 &
 # 6. Nginx 리버스 프록시 시작
 nginx -c /etc/nginx/nginx.conf &
 
-# 7. Spring Boot 백엔드 어플리케이션 실행 (포트 8081로 기동)
-java -Dserver.port=8081 -jar app.jar
+# 7. Spring Boot 백엔드 어플리케이션 실행 (포트 8081로 기동, 메모리 제한 옵션 주입)
+java -Xms128m -Xmx192m -XX:MaxMetaspaceSize=96m -Dserver.port=8081 -jar app.jar

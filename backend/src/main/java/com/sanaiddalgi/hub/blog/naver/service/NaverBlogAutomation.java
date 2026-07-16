@@ -786,7 +786,14 @@ public class NaverBlogAutomation {
         return playwright.chromium().launch(new BrowserType.LaunchOptions()
                 .setHeadless(headless)
                 .setSlowMo(properties.getNaverPlaywrightSlowMoMs())
-                .setArgs(List.of("--disable-blink-features=AutomationControlled")));
+                .setArgs(List.of(
+                        "--disable-blink-features=AutomationControlled",
+                        "--disable-dev-shm-usage",
+                        "--no-sandbox",
+                        "--disable-gpu",
+                        "--disable-software-rasterizer",
+                        "--js-flags=--max-old-space-size=128"
+                )));
     }
 
     /** SmartEditor iframe 또는 postwrite SPA 프레임 탐색 */
