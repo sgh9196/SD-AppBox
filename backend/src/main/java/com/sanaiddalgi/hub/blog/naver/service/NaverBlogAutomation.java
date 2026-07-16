@@ -584,6 +584,24 @@ public class NaverBlogAutomation {
         int actionMs = properties.getNaverEditorActionTimeoutMs();
         context.setDefaultTimeout(actionMs);
         context.setDefaultNavigationTimeout(Math.max(actionMs * 3, 60_000));
+
+        // [근본 해결] 저사양 무료 서버 환경의 타임아웃을 차단하기 위한 초경량 네트워크 필터링 (이미지, 폰트, 미디어, 광고/로그 스크립트 차단)
+        context.route("**/*", route -> {
+            String url = route.request().url().toLowerCase();
+            String resourceType = route.request().resourceType();
+            if ("image".equals(resourceType)
+                    || "font".equals(resourceType)
+                    || "media".equals(resourceType)
+                    || url.contains(".png") || url.contains(".jpg") || url.contains(".jpeg")
+                    || url.contains(".gif") || url.contains(".svg") || url.contains(".webp")
+                    || url.contains(".woff") || url.contains(".woff2") || url.contains(".ttf")
+                    || url.contains("adservice") || url.contains("analytics") || url.contains("/log/")) {
+                route.abort();
+            } else {
+                route.resume();
+            }
+        });
+
         return context;
     }
 
@@ -640,7 +658,7 @@ public class NaverBlogAutomation {
                 }
             }
 
-            page.waitForTimeout(2_000);
+            page.waitForTimeout(4_000);
         }
 
         if (hasNaverAuthCookie(context)) {
@@ -716,13 +734,8 @@ public class NaverBlogAutomation {
         if (safeCount(page, "input[type='tel'], input[name*='otp']") > 0) {
             return true;
         }
-        String body = safePageAction(Page::content, page, "").toLowerCase();
-        return body.contains("captcha")
-                || body.contains("자동입력 방지")
-                || body.contains("otp")
-                || body.contains("2-step")
-                || body.contains("본인확인")
-                || body.contains("새로운 기기");
+        // 무료 서버(0.1vCPU) 환경에서 content() 파싱으로 인한 극심한 렉 및 타임아웃 예방을 위해 셀렉터 위주로 체크
+        return false;
     }
 
     private int safeCount(Page page, String selector) {
