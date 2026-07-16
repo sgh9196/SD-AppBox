@@ -18,9 +18,10 @@ COPY prompt prompt
 # 1단계의 프론트엔드 빌드 결과물을 backend 빌드 리소스 경로로 복사
 COPY --from=frontend-builder /app/frontend/dist /app/frontend/dist
 
-# studio.jar 빌드 진행
+# studio.jar 빌드 및 런타임 의존성 JAR들을 target/dependency 폴더에 추출
 WORKDIR /app/backend
-RUN mvn clean package -DskipTests
+RUN mvn clean package -DskipTests && \
+    mvn dependency:copy-dependencies -DoutputDirectory=target/dependency -DskipTests
 
 # 3단계: 가상 화면(VNC) 및 실행 환경 구축
 FROM ubuntu:22.04
@@ -42,8 +43,9 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-# 빌드 결과물 카피
+# 빌드 결과물 및 임시 의존성 폴더 복사
 COPY --from=backend-builder /app/backend/target/studio.jar app.jar
+COPY --from=backend-builder /app/backend/target/dependency ./dependency
 COPY --from=backend-builder /app/prompt ./prompt
 COPY entrypoint.sh ./
 COPY nginx.conf /etc/nginx/nginx.conf
@@ -51,10 +53,9 @@ COPY nginx.conf /etc/nginx/nginx.conf
 # Windows 개행 코드(CRLF) 복구 및 실행 권한 부여
 RUN sed -i 's/\r$//' entrypoint.sh && chmod +x entrypoint.sh
 
-# Playwright Chromium 브라우저 및 실행용 리눅스 라이브러리 자동 설치 (스프링부트 nested jar 우회)
-RUN wget https://repo1.maven.org/maven2/com/microsoft/playwright/playwright/1.49.0/playwright-1.49.0.jar && \
-    java -cp playwright-1.49.0.jar com.microsoft.playwright.CLI install --with-deps chromium && \
-    rm playwright-1.49.0.jar
+# 모든 라이브러리를 클래스패스에 바인딩하여 Playwright 및 Chromium 브라우저 완벽 설치
+RUN java -cp "app.jar:dependency/*" com.microsoft.playwright.CLI install --with-deps chromium && \
+    rm -rf dependency
 
 # VNC 디스플레이 설정
 ENV DISPLAY=:99
