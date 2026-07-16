@@ -51,8 +51,10 @@ COPY nginx.conf /etc/nginx/nginx.conf
 # Windows 개행 코드(CRLF) 복구 및 실행 권한 부여
 RUN sed -i 's/\r$//' entrypoint.sh && chmod +x entrypoint.sh
 
-# Playwright Chromium 브라우저 및 실행용 리눅스 라이브러리 자동 설치
-RUN java -cp app.jar com.microsoft.playwright.CLI install --with-deps chromium
+# Playwright Chromium 브라우저 및 실행용 리눅스 라이브러리 자동 설치 (스프링부트 nested jar 우회)
+RUN wget https://repo1.maven.org/maven2/com/microsoft/playwright/playwright/1.49.0/playwright-1.49.0.jar && \
+    java -cp playwright-1.49.0.jar com.microsoft.playwright.CLI install --with-deps chromium && \
+    rm playwright-1.49.0.jar
 
 # VNC 디스플레이 설정
 ENV DISPLAY=:99
